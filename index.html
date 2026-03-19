@@ -5,23 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vesnická chalupa s wellness | Brodek u Konice</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
         body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800">
+<body class="bg-stone-50 text-stone-900">
 
     <header class="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src="https://i.postimg.cc/G2M8x9Mh/chalupa_brodek_u_konice_f02e_8e5c_636238.jpg" alt="Vesnická chalupa Brodek" class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="relative z-10 text-center px-4">
             <h1 class="text-5xl md:text-7xl mb-4 font-light tracking-tight">Tradiční klid, <span class="italic font-serif">moderní relax.</span></h1>
-            <p class="text-xl md:text-2xl font-light tracking-widest uppercase">Vesnická chalupa s wellness v Brodku u Konice</p>
-            <div class="mt-10">
-                <a href="#kontakt" class="bg-white text-stone-900 px-8 py-4 uppercase tracking-widest text-sm font-bold hover:bg-stone-200 transition">Rezervovat pobyt</a>
+            <p class="text-xl md:text-2xl font-light tracking-widest uppercase">Chalupa s wellness v Brodku u Konice</p>
+            <div class="mt-10 flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#kontakt" class="bg-white text-stone-900 px-8 py-4 uppercase tracking-widest text-sm font-bold hover:bg-stone-200 transition">Rezervovat</a>
+                <a href="#wellness" class="bg-transparent border border-white text-white px-8 py-4 uppercase tracking-widest text-sm font-bold hover:bg-white/10 transition">Prohlédnout wellness</a>
             </div>
         </div>
     </header>
@@ -30,18 +31,15 @@
         <div class="max-w-5xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-4xl mb-8 text-stone-900 font-light tracking-tight">Váš soukromý ráj na <span class="font-serif italic text-amber-800">Drahanské vrchovině</span></h2>
+                    <h2 class="text-4xl mb-8 text-stone-900 font-light tracking-tight text-balance">Váš soukromý ráj na <span class="font-serif italic text-amber-800">Drahanské vrchovině</span></h2>
                     <p class="text-stone-600 mb-6 leading-relaxed text-lg">
                         Naše chalupa nabízí dokonalý únik z každodenního shonu. Ať už hledáte klidné místo pro rodinnou dovolenou nebo prostor pro relaxaci s přáteli, u nás najdete zázemí pro <strong>až 8 hostů</strong>.
                     </p>
-                    <p class="text-stone-600 mb-8 leading-relaxed">
-                        Užijte si večery u krbových kamen, ranní kávu na prosluněné terase nebo celoroční relaxaci v našem špičkovém wellness.
-                    </p>
-                    <div class="flex flex-wrap gap-4 text-xs uppercase tracking-widest text-stone-500 font-bold">
-                        <span class="bg-stone-100 px-4 py-2 rounded-full">2 ložnice</span>
-                        <span class="bg-stone-100 px-4 py-2 rounded-full">Kapacita 8 osob</span>
-                        <span class="bg-stone-100 px-4 py-2 rounded-full">Oplocená zahrada</span>
-                        <span class="bg-stone-100 px-4 py-2 rounded-full">Wi-Fi zdarma</span>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="bg-stone-100 px-4 py-2 text-xs font-bold uppercase tracking-widest">2 ložnice</span>
+                        <span class="bg-stone-100 px-4 py-2 text-xs font-bold uppercase tracking-widest">Swim Spa</span>
+                        <span class="bg-stone-100 px-4 py-2 text-xs font-bold uppercase tracking-widest">Sauna</span>
+                        <span class="bg-stone-100 px-4 py-2 text-xs font-bold uppercase tracking-widest">Oplocená zahrada</span>
                     </div>
                 </div>
                 <div class="relative">
@@ -51,138 +49,96 @@
         </div>
     </section>
 
-    <section class="py-16 bg-stone-50 border-y border-stone-100">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-                <div class="group">
-                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🔥</div>
-                    <h4 class="font-bold text-stone-800 uppercase text-xs tracking-[0.2em]">Krbová kamna</h4>
-                </div>
-                <div class="group">
-                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🍖</div>
-                    <h4 class="font-bold text-stone-800 uppercase text-xs tracking-[0.2em]">Gril & Terasa</h4>
-                </div>
-                <div class="group">
-                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🚲</div>
-                    <h4 class="font-bold text-stone-800 uppercase text-xs tracking-[0.2em]">Úschovna kol</h4>
-                </div>
-                <div class="group">
-                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🐕</div>
-                    <h4 class="font-bold text-stone-800 uppercase text-xs tracking-[0.2em]">Psi vítáni</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="wellness" class="py-24 px-4 bg-white text-center">
+    <section id="wellness" class="py-24 px-4 bg-stone-50 text-center border-y border-stone-200">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl mb-4 text-stone-900 font-light italic font-serif">Nekonečný relax</h2>
-            <p class="text-stone-500 uppercase tracking-[0.3em] text-sm mb-16 font-bold underline decoration-amber-800 underline-offset-8">Wellness přímo na zahradě</p>
-            
+            <h2 class="text-4xl mb-16 text-stone-900 font-light italic font-serif text-balance text-center">Luxusní zázemí přímo na zahradě</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="group">
                     <div class="overflow-hidden mb-6 rounded-sm shadow-lg border-8 border-white">
-                        <img src="https://i.postimg.cc/brsGC8MY/03503293_5efc_4605_ba6e_133157f95ea6_5d08_8e5c_636251.jpg" alt="Venkovní Swim Spa" class="w-full h-[400px] object-cover group-hover:scale-105 transition duration-700">
+                        <img src="https://i.postimg.cc/brsGC8MY/03503293_5efc_4605_ba6e_133157f95ea6_5d08_8e5c_636251.jpg" alt="Swim Spa" class="w-full h-[400px] object-cover group-hover:scale-105 transition duration-700">
                     </div>
                     <h3 class="text-2xl mb-2 font-serif italic text-stone-800">Venkovní Swim Spa</h3>
-                    <p class="text-stone-500 max-w-sm mx-auto">Velká vířivka s protiproudem pro plavání i masáž pod širým nebem. V provozu celoročně.</p>
+                    <p class="text-stone-500 max-w-sm mx-auto">Kombinace bazénu s protiproudem a vířivky. Ideální pro ranní plavání i večerní relaxaci.</p>
                 </div>
                 <div class="group">
                     <div class="overflow-hidden mb-6 rounded-sm shadow-lg border-8 border-white">
                         <img src="https://i.postimg.cc/cCrK9Zjs/8dcf68ba_77ac_4b62_9351_4db9063efce2_59a5_8e5c_636249.jpg" alt="Finská sauna" class="w-full h-[400px] object-cover group-hover:scale-105 transition duration-700">
                     </div>
                     <h3 class="text-2xl mb-2 font-serif italic text-stone-800">Finská sauna</h3>
-                    <p class="text-stone-500 max-w-sm mx-auto">Klasická sauna provoněná dřevem pro dokonalou očistu těla i mysli.</p>
+                    <p class="text-stone-500 max-w-sm mx-auto">Klasická sauna pro dokonalou regeneraci po dni stráveném v přírodě.</p>
                 </div>
             </div>
         </div>
     </section>
- 
-    <section id="kontakt" class="py-24 px-4 bg-stone-100">
-    <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl mb-4 text-stone-900">Rezervace a dostupnost</h2>
-            <p class="text-stone-500 italic text-lg text-balance">Podívejte se na volné termíny a pošlete nám nezávaznou poptávku.</p>
-        </div>
 
-        <div class="bg-white p-4 md:p-8 shadow-sm border border-stone-200 mb-8 rounded-sm">
-            <h3 class="text-xl mb-6 font-semibold border-b pb-2 text-stone-800">1. Přehled obsazenosti</h3>
-            <div class="overflow-x-auto">
-                <script src="https://obsazenost.e-chalupy.cz/resize.js"></script>
-                <iframe src="https://obsazenost.e-chalupy.cz/kalendar.php?id=11299&pocetMesicu=12&velikost=3&legenda=ano&vybraneMesice=&naStred=ano&ctvrtleti=ne&stin=ne&jazyk=cz&jednotky=ano&idJednotky=0&vypisJednotky=ne&souhrnny=&pozadi=ffffff&kalendarText=000000&kalendarPozadi=ffffff&ramecek=dddddd&mesicText=555555&mesicPozadi=dddddd&dnyText=008000&dnyPozadia=ffffff&obsazenoText=222222&obsazenoPozadi=f74848&volnoText=222222&volnoPozadi=67cf67&castecneText=222222&castecnePozadi=489ce0&neaktivniDnyText=bbbbbb&neaktivniDnyPozadi=ffffff&legendaText=000000&fontFamily=Verdana&extCss=" height="460px" width="100%" frameborder="0" id="echalupy-kalendar"></iframe>
+    <section id="kontakt" class="py-24 px-4 bg-stone-100">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl mb-4 text-stone-900">Rezervace a dostupnost</h2>
+                <p class="text-stone-500 italic text-lg">Podívejte se na volné termíny a napište nám.</p>
+            </div>
+
+            <div class="bg-white p-4 md:p-8 shadow-sm border border-stone-200 mb-8 rounded-sm">
+                <h3 class="text-xl mb-6 font-semibold border-b pb-2">1. Přehled obsazenosti</h3>
+                <div class="overflow-hidden">
+                    <script src="https://obsazenost.e-chalupy.cz/resize.js"></script>
+                    <iframe src="https://obsazenost.e-chalupy.cz/kalendar.php?id=11299&pocetMesicu=12&velikost=3&legenda=ano&vybraneMesice=&naStred=ano&ctvrtleti=ne&stin=ne&jazyk=cz&jednotky=ano&idJednotky=0&vypisJednotky=ne&souhrnny=&pozadi=ffffff&kalendarText=000000&kalendarPozadi=ffffff&ramecek=dddddd&mesicText=555555&mesicPozadi=dddddd&dnyText=008000&dnyPozadia=ffffff&obsazenoText=222222&obsazenoPozadi=f74848&volnoText=222222&volnoPozadi=67cf67&castecneText=222222&castecnePozadi=489ce0&neaktivniDnyText=bbbbbb&neaktivniDnyPozadi=ffffff&legendaText=000000&fontFamily=Verdana&extCss=" height="460px" width="100%" frameborder="0" id="echalupy-kalendar"></iframe>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 md:p-8 shadow-sm border border-stone-200 rounded-sm text-left">
+                <h3 class="text-xl mb-6 font-semibold border-b pb-2 text-left">2. Poptávkový formulář</h3>
+                <form action="https://formspree.io/f/mgondakl" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Celé jméno</label>
+                        <input type="text" name="jmeno" placeholder="Jan Novák" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">E-mail</label>
+                        <input type="email" name="email" placeholder="jan@email.cz" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500 text-left">Příjezd</label>
+                        <input type="date" name="prijezd" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none text-left" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500 text-left">Odjezd</label>
+                        <input type="date" name="odjezd" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none text-left" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Zpráva (počet osob, dotazy...)</label>
+                        <textarea name="zprava" rows="4" placeholder="Dobrý den, máme zájem o..." class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none"></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full bg-stone-900 text-white py-5 uppercase tracking-widest text-sm font-bold hover:bg-amber-800 transition shadow-md">Odeslat poptávku</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </section>
 
-        <div class="bg-white p-4 md:p-8 shadow-sm border border-stone-200 rounded-sm">
-            <h3 class="text-xl mb-6 font-semibold border-b pb-2 text-stone-800">2. Rezervační formulář</h3>
-            <form action="https://formspree.io/f/mgondakl" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-xs uppercase tracking-[0.2em] mb-2 font-bold text-stone-500">Celé jméno</label>
-                    <input type="text" name="jmeno" placeholder="Jan Novák" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-[0.2em] mb-2 font-bold text-stone-500">E-mail</label>
-                    <input type="email" name="email" placeholder="jan@email.cz" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-[0.2em] mb-2 font-bold text-stone-500">Příjezd</label>
-                    <input type="date" name="prijezd" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-[0.2em] mb-2 font-bold text-stone-500">Odjezd</label>
-                    <input type="date" name="odjezd" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
-                </div>
-                <div class="md:col-span-2">
-                    <label class="block text-xs uppercase tracking-[0.2em] mb-2 font-bold text-stone-500">Počet osob a poznámka</label>
-                    <textarea name="zprava" rows="4" placeholder="Dobrý den, máme zájem o pobyt pro 4 dospělé a 2 děti..." class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none"></textarea>
-                </div>
-                <div class="md:col-span-2">
-                    <button type="submit" class="w-full bg-stone-900 text-white py-5 uppercase tracking-[0.3em] text-sm font-bold hover:bg-amber-800 transition shadow-md">Odeslat poptávku</button>
-                </div>
-            </form>
+    <footer class="bg-stone-900 text-stone-400 py-16 px-4 border-t border-stone-800">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <h3 class="text-white uppercase tracking-widest text-sm font-bold mb-6">Vesnická chalupa Brodek</h3>
+                <p class="text-sm leading-relaxed text-balance">Moderní ubytování s rodinnou atmosférou a špičkovým wellness v srdci Drahanské vrchoviny.</p>
+            </div>
+            <div>
+                <h3 class="text-white uppercase tracking-widest text-sm font-bold mb-6">Kontakt</h3>
+                <ul class="text-sm space-y-4">
+                    <li class="flex items-center gap-3">📍 Brodek u Konice 186, 798 46</li>
+                    <li class="flex items-center gap-3">📞 +420 777 123 456</li> <li class="flex items-center gap-3">✉️ chalupabrodek@email.cz</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white uppercase tracking-widest text-sm font-bold mb-6">Odkazy</h3>
+                <a href="https://www.e-chalupy.cz/vychodni-cechy/ubytovani-brodek-u-konice-chalupa-s-wellness-11299.php" target="_blank" class="inline-block bg-stone-800 p-3 text-xs text-white hover:bg-amber-800 transition">Profil na e-chalupy.cz</a>
+            </div>
         </div>
-    </div>
-</section>
-<footer class="bg-stone-900 text-stone-400 py-16 px-4 border-t border-stone-800">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-        
-        <div>
-            <h3 class="text-white uppercase tracking-widest text-sm font-bold mb-6">Vesnická chalupa Brodek</h3>
-            <p class="text-sm leading-relaxed">
-                Moderní ubytování s rodinnou atmosférou a špičkovým wellness v srdci Drahanské vrchoviny. Ideální místo pro váš odpočinek v přírodě.
-            </p>
+        <div class="max-w-6xl mx-auto mt-16 pt-8 border-t border-stone-800 text-center text-[10px] uppercase tracking-widest">
+            <p>© 2026 Vesnická chalupa s wellness v Brodku. Všechna práva vyhrazena.</p>
         </div>
+    </footer>
 
-        <div>
-            <h3 class="text-white uppercase tracking-widest text-sm font-bold mb-6">Kontakt</h3>
-            <ul class="text-sm space-y-4">
-                <li class="flex items-center gap-3">
-                    <span>📍</span>
-                    <a href="https://maps.google.com/?q=Brodek+u+Konice+186" target="_blank" class="hover:text-amber-500 transition">Brodek u Konice 186, 798 46</a>
-                </li>
-                <li class="flex items-center gap-3">
-                    <span>📞</span>
-                    <a href="tel:+420734708227" class="hover:text-amber-500 transition">+420 777 123 456</a> </li>
-                <li class="flex items-center gap-3">
-                    <span>✉️</span>
-                    <a href="mailto:chalupabrodek@email.cz" class="hover:text-amber-500 transition">chalupabrodek@email.cz</a>
-                </li>
-            </ul>
-        </div>
-
-        <div>
-            <h3 class="text-white uppercase tracking-widest text-sm font-bold mb-6">Kde nás najdete</h3>
-            <div class="flex gap-4">
-                <a href="https://www.e-chalupy.cz/vychodni-cechy/ubytovani-brodek-u-konice-chalupa-s-wellness-11299.php" target="_blank" class="bg-stone-800 p-3 rounded-sm hover:bg-amber-800 transition text-xs text-white">
-                    Profil na e-chalupy.cz
-                </a>
-                </div>
-        </div>
-    </div>
-
-    <div class="max-w-6xl mx-auto mt-16 pt-8 border-t border-stone-800 text-center text-xs tracking-widest uppercase">
-        <p>&copy; 2026 Vesnická chalupa s wellness v Brodku. Všechna práva vyhrazena.</p>
-    </div>
-</footer> 
 </body>
 </html>
