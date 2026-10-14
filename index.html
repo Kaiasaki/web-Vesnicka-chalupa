@@ -115,6 +115,24 @@
     </div>
 </section>
     
+    <section id="pocasi" class="py-24 px-4 bg-stone-50 border-y border-stone-200">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl mb-4 text-stone-900 font-light italic font-serif text-balance">Počasí v Brodku u Konice</h2>
+                <p class="text-stone-500 italic text-lg">Ať víte, co sbalit. Chalupa leží na Drahanské vrchovině, zhruba 600 m nad mořem.</p>
+            </div>
+
+            <div id="pocasi-widget" class="grid grid-cols-1 md:grid-cols-3 gap-6" aria-live="polite">
+                <p class="md:col-span-3 text-center text-stone-400 italic py-16">Načítám předpověď…</p>
+            </div>
+
+            <p class="mt-8 text-center text-xs text-stone-400">
+                Předpověď: <a href="https://www.met.no/en" target="_blank" rel="noopener" class="underline hover:text-amber-800">MET Norway</a> (CC BY 4.0)
+                · <a href="https://www.yr.no/en/forecast/daily-table/2-3078585" target="_blank" rel="noopener" class="underline hover:text-amber-800">Podrobná předpověď na yr.no</a>
+            </p>
+        </div>
+    </section>
+
     <section id="kontakt" class="py-24 px-4 bg-stone-100">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12">
@@ -183,6 +201,148 @@
             <p>© 2026 Vesnická chalupa s wellness v Brodku. Všechna práva vyhrazena.</p>
         </div>
     </footer>
+
+    <script>
+    // Počasí: předpověď MET Norway (yr.no) načtená přímo z prohlížeče a na 30 minut uložená
+    (function () {
+        const API = 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=49.5487&lon=16.8329&altitude=595';
+        const KLIC = 'pocasi-brodek';
+        const ZONA = 'Europe/Prague';
+        const box = document.getElementById('pocasi-widget');
+
+        // [část kódu MET, popis, ikona] – pořadí je důležité (např. "partlycloudy" před "cloudy")
+        const TYPY = [
+            ['thunder', 'Bouřky', 'bourka'],
+            ['sleet', 'Déšť se sněhem', 'dest-snih'],
+            ['snowshowers', 'Sněhové přeháňky', 'snih'],
+            ['heavysnow', 'Husté sněžení', 'snih'],
+            ['lightsnow', 'Slabé sněžení', 'snih'],
+            ['snow', 'Sněžení', 'snih'],
+            ['rainshowers', 'Přeháňky', 'dest'],
+            ['heavyrain', 'Silný déšť', 'dest'],
+            ['lightrain', 'Slabý déšť', 'dest'],
+            ['rain', 'Déšť', 'dest'],
+            ['fog', 'Mlha', 'mlha'],
+            ['partlycloudy', 'Polojasno', 'polojasno'],
+            ['fair', 'Skoro jasno', 'polojasno'],
+            ['cloudy', 'Zataženo', 'mrak'],
+            ['clearsky', 'Jasno', 'jasno']
+        ];
+
+        const MRAK = 'M6.5 18A3.5 3.5 0 0 1 6.1 11.02A5.5 5.5 0 0 1 16.7 9.6A4.25 4.25 0 1 1 17.5 18Z';
+        const MRAK_NAHORE = `<path transform="translate(0 -3)" d="${MRAK}"/>`;
+        const KAPKY = '<path d="M8 18.5l-1 2.5M12 18.5l-1 2.5M16 18.5l-1 2.5"/>';
+        const VLOCKY = '<path stroke-width="2.4" d="M8 19h.01M12 21h.01M16 19h.01"/>';
+        const IKONY = {
+            jasno: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
+            noc: '<path d="M20 14.5A8 8 0 1 1 9.5 4A6.5 6.5 0 0 0 20 14.5Z"/>',
+            polojasno: `<circle cx="8.5" cy="8" r="3"/><path d="M8.5 2v1.5M2.5 8H4M4.3 3.8l1 1M12.7 3.8l-1 1"/><path fill="#fff" transform="translate(1.5 2)" d="${MRAK}"/>`,
+            'polojasno-noc': `<path d="M12 9A4.5 4.5 0 1 1 7 3A3.5 3.5 0 0 0 12 9Z"/><path fill="#fff" transform="translate(1.5 2)" d="${MRAK}"/>`,
+            mrak: `<path d="${MRAK}"/>`,
+            mlha: '<path d="M4 8h16M2.5 12h19M4 16h16M7 20h10"/>',
+            dest: MRAK_NAHORE + KAPKY,
+            snih: MRAK_NAHORE + VLOCKY,
+            'dest-snih': MRAK_NAHORE + '<path d="M8 18.5l-1 2.5M16 18.5l-1 2.5"/><path stroke-width="2.4" d="M12 20h.01"/>',
+            bourka: MRAK_NAHORE + '<path d="M12.5 15.5l-2 3.5h3l-2 3.5"/>'
+        };
+
+        const denKlic = d => new Intl.DateTimeFormat('en-CA', { timeZone: ZONA }).format(d); // RRRR-MM-DD
+        const hodina = d => +new Intl.DateTimeFormat('en-GB', { timeZone: ZONA, hour: '2-digit', hourCycle: 'h23' }).format(d);
+        const denTydne = new Intl.DateTimeFormat('cs-CZ', { timeZone: ZONA, weekday: 'short' });
+        const datum = new Intl.DateTimeFormat('cs-CZ', { timeZone: ZONA, day: 'numeric', month: 'numeric' });
+        const stupne = t => `${Math.round(t)}°`;
+
+        function typ(kod) {
+            const zaklad = kod.replace(/_(day|night|polartwilight)$/, '');
+            const [, popis, ikona] = TYPY.find(([cast]) => zaklad.includes(cast)) || ['', 'Zataženo', 'mrak'];
+            const noc = kod.endsWith('_night');
+            return { popis, ikona: noc && ikona === 'jasno' ? 'noc' : noc && ikona === 'polojasno' ? 'polojasno-noc' : ikona };
+        }
+
+        function ikona(nazev, tridy) {
+            return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="${tridy}" aria-hidden="true">${IKONY[nazev]}</svg>`;
+        }
+
+        function zpracuj(data) {
+            const rada = data.properties.timeseries.map(t => ({ cas: new Date(t.time), ...t.data }));
+            const ted = rada.filter(t => t.cas <= new Date() && t.next_1_hours).pop() || rada[0];
+            const dnes = denKlic(new Date());
+            const dny = new Map();
+            for (const t of rada) {
+                const den = denKlic(t.cas);
+                if (den <= dnes) continue;
+                if (!dny.has(den)) dny.set(den, { datum: t.cas, teploty: [], srazky: 0, symbol: null, odchylka: 99 });
+                const d = dny.get(den);
+                d.teploty.push(t.instant.details.air_temperature);
+                // srážky sčítáme po šestihodinových blocích, aby se nic nezapočítalo dvakrát
+                if (t.cas.getUTCHours() % 6 === 0 && t.next_6_hours) d.srazky += t.next_6_hours.details.precipitation_amount || 0;
+                // symbol dne bereme z 12hodinového výhledu, který začíná nejblíž 8. hodině ráno
+                const symbol = t.next_12_hours && t.next_12_hours.summary.symbol_code;
+                const odchylka = Math.abs(hodina(t.cas) - 8);
+                if (symbol && odchylka < d.odchylka) Object.assign(d, { symbol, odchylka });
+            }
+            return { ted, dny: [...dny.values()].filter(d => d.symbol && d.teploty.length >= 3).slice(0, 7) };
+        }
+
+        function vykresli({ ted, dny }) {
+            const t = ted.instant.details;
+            const nyni = typ(ted.next_1_hours ? ted.next_1_hours.summary.symbol_code : ted.next_6_hours.summary.symbol_code);
+            box.innerHTML = `
+                <div class="bg-white p-8 border border-stone-200 shadow-sm rounded-sm flex flex-col items-center justify-center text-center">
+                    <p class="text-xs uppercase tracking-widest font-bold text-stone-500 mb-4">Právě teď</p>
+                    ${ikona(nyni.ikona, 'w-20 h-20 text-amber-800 mb-2')}
+                    <p class="text-6xl font-light tracking-tight">${stupne(t.air_temperature)}</p>
+                    <p class="font-serif italic text-xl text-stone-700 mt-2">${nyni.popis}</p>
+                    <p class="text-sm text-stone-500 mt-4">Vítr ${Math.round(t.wind_speed * 3.6)} km/h · Vlhkost ${Math.round(t.relative_humidity)} %</p>
+                </div>
+                <ul class="md:col-span-2 bg-white px-6 py-2 md:p-6 border border-stone-200 shadow-sm rounded-sm grid grid-cols-1 md:grid-cols-7 md:gap-2 md:content-center">
+                    ${dny.map((d, i) => {
+                        const x = typ(d.symbol);
+                        const srazky = d.srazky >= 0.5 ? `<span class="whitespace-nowrap">${d.srazky.toLocaleString('cs-CZ', { maximumFractionDigits: 1 })} mm</span>` : '';
+                        return `
+                    <li class="flex md:flex-col items-center gap-4 md:gap-1 py-3 md:py-0 border-b md:border-0 border-stone-100 last:border-0 md:text-center" title="${x.popis}">
+                        <span class="w-16 md:w-auto shrink-0">
+                            <span class="block text-xs uppercase tracking-widest font-bold text-stone-900">${i === 0 ? 'Zítra' : denTydne.format(d.datum)}</span>
+                            <span class="block text-xs text-stone-400">${datum.format(d.datum)}</span>
+                        </span>
+                        ${ikona(x.ikona, 'w-9 h-9 shrink-0 text-amber-800 md:my-2')}
+                        <span class="flex-1 md:flex-none md:order-last text-sm text-stone-500"><span class="md:hidden">${x.popis}${srazky ? ' · ' : ''}</span>${srazky}</span>
+                        <span class="whitespace-nowrap"><b class="font-bold">${stupne(Math.max(...d.teploty))}</b> <span class="text-stone-400">${stupne(Math.min(...d.teploty))}</span></span>
+                    </li>`;
+                    }).join('')}
+                </ul>`;
+        }
+
+        function nacti() {
+            try {
+                const ulozeno = JSON.parse(localStorage.getItem(KLIC));
+                if (ulozeno && Date.now() - ulozeno.cas < 30 * 60 * 1000) return Promise.resolve(ulozeno.data);
+            } catch (e) {}
+            return fetch(API)
+                .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+                .then(data => {
+                    try { localStorage.setItem(KLIC, JSON.stringify({ cas: Date.now(), data })); } catch (e) {}
+                    return data;
+                });
+        }
+
+        function spust() {
+            nacti().then(data => vykresli(zpracuj(data))).catch(() => {
+                box.innerHTML = '<p class="md:col-span-3 text-center text-stone-500 italic py-16">Předpověď se teď nepodařilo načíst. Zkuste to prosím později, nebo se podívejte na <a href="https://www.yr.no/en/forecast/daily-table/2-3078585" target="_blank" rel="noopener" class="underline hover:text-amber-800">yr.no</a>.</p>';
+            });
+        }
+
+        // Předpověď stáhneme až ve chvíli, kdy se k ní návštěvník doscrolluje
+        if ('IntersectionObserver' in window) {
+            const hlidac = new IntersectionObserver(zaznamy => {
+                if (zaznamy.some(z => z.isIntersecting)) { hlidac.disconnect(); spust(); }
+            }, { rootMargin: '400px' });
+            hlidac.observe(box);
+        } else {
+            spust();
+        }
+    })();
+    </script>
 
 </body>
 </html>
