@@ -4,7 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vesnická chalupa s wellness | Brodek u Konice</title>
+    <meta name="description" content="Celá chalupa pro až 10 hostů v Brodku u Konice: finská sauna, koupací sud s vířivkou, bazén a zahrada 3 800 m². Ceník, fotky a volné termíny.">
+    <link rel="canonical" href="https://vesnickachalupa.cz/">
+    <meta name="theme-color" content="#1c1917">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c1917'/%3E%3Cpath d='M15 31 32 17l17 14v17H15z' fill='none' stroke='%23d97706' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+    <!-- Náhled při sdílení odkazu (WhatsApp, Facebook, Messenger…) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vesnickachalupa.cz/">
+    <meta property="og:site_name" content="Vesnická chalupa s wellness">
+    <meta property="og:title" content="Vesnická chalupa s wellness | Brodek u Konice">
+    <meta property="og:description" content="Celá chalupa pro až 10 hostů: sauna, koupací sud s vířivkou, bazén a velká zahrada na Drahanské vrchovině.">
+    <meta property="og:image" content="https://vesnickachalupa.cz/img/sdileni.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Zahrada chalupy s jezírkem">
+    <meta property="og:locale" content="cs_CZ">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Údaje o ubytování pro vyhledávače -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Vesnická chalupa s wellness",
+        "description": "Celá chalupa k pronájmu pro až 10 hostů se 4 ložnicemi, finskou saunou, koupacím sudem s vířivkou, venkovním bazénem a oplocenou zahradou 3 800 m².",
+        "url": "https://vesnickachalupa.cz/",
+        "image": [
+            "https://vesnickachalupa.cz/img/galerie/44.jpg",
+            "https://vesnickachalupa.cz/img/galerie/06.jpg",
+            "https://vesnickachalupa.cz/img/galerie/09.jpg",
+            "https://vesnickachalupa.cz/img/galerie/13.jpg"
+        ],
+        "telephone": "+420734708227",
+        "email": "chalupabrodek@email.cz",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Brodek u Konice 235",
+            "addressLocality": "Brodek u Konice",
+            "postalCode": "798 46",
+            "addressCountry": "CZ"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 49.55158, "longitude": 16.82617 },
+        "priceRange": "18 000 – 40 000 Kč",
+        "currenciesAccepted": "CZK",
+        "numberOfRooms": 4,
+        "petsAllowed": false,
+        "amenityFeature": [
+            { "@type": "LocationFeatureSpecification", "name": "Finská sauna", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Koupací sud s vířivkou", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Venkovní bazén", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Parkování", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Krb", "value": true }
+        ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -51,7 +110,7 @@
     </div>
 
     <header class="relative h-screen flex items-center justify-center text-white overflow-hidden">
-        <img src="https://i.postimg.cc/G2M8x9Mh/chalupa_brodek_u_konice_f02e_8e5c_636238.jpg" alt="Vesnická chalupa Brodek" class="absolute inset-0 w-full h-full object-cover">
+        <img src="img/galerie/06.jpg" alt="Vesnická chalupa Brodek" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="relative z-10 text-center px-4">
             <h1 class="text-5xl md:text-7xl mb-4 font-light tracking-tight">Tradiční klid, <span class="italic font-serif">moderní relax.</span></h1>
@@ -82,7 +141,7 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="https://i.postimg.cc/D08WjFDy/1_img_20190628_182303_d72b_8e5c_636255.jpg" alt="Zahrada s jezírkem" class="w-full h-full object-cover shadow-2xl rounded-sm border-[12px] border-stone-50">
+                    <img src="img/galerie/13.jpg" alt="Zahrada s jezírkem" loading="lazy" width="1280" height="960" class="w-full h-full object-cover shadow-2xl rounded-sm border-[12px] border-stone-50">
                 </div>
             </div>
         </div>
@@ -94,14 +153,14 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="group">
                     <div class="overflow-hidden mb-6 rounded-sm shadow-lg border-8 border-white">
-                        <img src="https://i.postimg.cc/brsGC8MY/03503293_5efc_4605_ba6e_133157f95ea6_5d08_8e5c_636251.jpg" alt="Wellness domek s terasou a koupacím sudem" class="w-full h-[400px] object-cover group-hover:scale-105 transition duration-700">
+                        <img src="img/galerie/11.jpg" alt="Wellness domek s terasou a koupacím sudem" loading="lazy" class="w-full h-[400px] object-cover group-hover:scale-105 transition duration-700">
                     </div>
                     <h3 class="text-2xl mb-2 font-serif italic text-stone-800">Koupací sud s vířivkou</h3>
                     <p class="text-stone-500 max-w-sm mx-auto">Nová wellness zóna s terasou a venkovním vyhřívaným koupacím sudem s vířivkou pro 6 osob. Ideální na večerní relax pod hvězdami.</p>
                 </div>
                 <div class="group">
                     <div class="overflow-hidden mb-6 rounded-sm shadow-lg border-8 border-white">
-                        <img src="https://i.postimg.cc/cCrK9Zjs/8dcf68ba_77ac_4b62_9351_4db9063efce2_59a5_8e5c_636249.jpg" alt="Finská sauna" class="w-full h-[400px] object-cover group-hover:scale-105 transition duration-700">
+                        <img src="img/galerie/09.jpg" alt="Finská sauna" loading="lazy" class="w-full h-[400px] object-cover group-hover:scale-105 transition duration-700">
                     </div>
                     <h3 class="text-2xl mb-2 font-serif italic text-stone-800">Finská sauna pro 8 osob</h3>
                     <p class="text-stone-500 max-w-sm mx-auto">Prostorná sauna s odpočívárnou s vyhřívanou podlahou a vlastním sociálním zařízením. Dokonalá regenerace po dni v přírodě.</p>
@@ -342,7 +401,7 @@
                 <h3 class="text-xl mb-6 font-semibold border-b pb-2">1. Přehled obsazenosti</h3>
                 <div class="overflow-hidden">
                     <script src="https://obsazenost.e-chalupy.cz/resize.js"></script>
-                    <iframe src="https://obsazenost.e-chalupy.cz/kalendar.php?id=11299&pocetMesicu=12&velikost=3&legenda=ano&vybraneMesice=&naStred=ano&ctvrtleti=ne&stin=ne&jazyk=cz&jednotky=ano&idJednotky=0&vypisJednotky=ne&souhrnny=&pozadi=ffffff&kalendarText=000000&kalendarPozadi=ffffff&ramecek=dddddd&mesicText=555555&mesicPozadi=dddddd&dnyText=008000&dnyPozadia=ffffff&obsazenoText=222222&obsazenoPozadi=f74848&volnoText=222222&volnoPozadi=67cf67&castecneText=222222&castecnePozadi=489ce0&neaktivniDnyText=bbbbbb&neaktivniDnyPozadi=ffffff&legendaText=000000&fontFamily=Verdana&extCss=" height="460px" width="100%" frameborder="0" id="echalupy-kalendar"></iframe>
+                    <iframe src="https://obsazenost.e-chalupy.cz/kalendar.php?id=11299&pocetMesicu=12&velikost=3&legenda=ano&vybraneMesice=&naStred=ano&ctvrtleti=ne&stin=ne&jazyk=cz&jednotky=ano&idJednotky=0&vypisJednotky=ne&souhrnny=&pozadi=ffffff&kalendarText=000000&kalendarPozadi=ffffff&ramecek=dddddd&mesicText=555555&mesicPozadi=dddddd&dnyText=008000&dnyPozadia=ffffff&obsazenoText=222222&obsazenoPozadi=f74848&volnoText=222222&volnoPozadi=67cf67&castecneText=222222&castecnePozadi=489ce0&neaktivniDnyText=bbbbbb&neaktivniDnyPozadi=ffffff&legendaText=000000&fontFamily=Verdana&extCss=" height="460px" width="100%" frameborder="0" loading="lazy" title="Obsazenost chalupy" id="echalupy-kalendar"></iframe>
                 </div>
             </div>
 
@@ -391,7 +450,7 @@
                     <p id="f-chyba" class="md:col-span-2 hidden text-sm text-red-700 bg-red-50 border border-red-200 p-3" role="alert"></p>
                     <div class="md:col-span-2">
                         <button type="submit" id="f-odeslat" class="w-full bg-stone-900 text-white py-5 uppercase tracking-widest text-sm font-bold hover:bg-amber-800 transition shadow-md disabled:opacity-60 disabled:cursor-wait">Odeslat poptávku</button>
-                        <p class="text-xs text-stone-400 mt-3 text-center">Poptávka je nezávazná. Raději voláte? <a href="tel:+420734708227" class="underline hover:text-amber-800">+420 734 708 227</a></p>
+                        <p class="text-xs text-stone-400 mt-3 text-center">Poptávka je nezávazná. Raději voláte? <a href="tel:+420734708227" class="underline hover:text-amber-800">+420 734 708 227</a><br><a href="/ochrana-osobnich-udaju.html" class="underline hover:text-amber-800">Jak zpracováváme vaše údaje</a></p>
                     </div>
                 </form>
                 <div id="poptavka-diky" class="hidden text-center py-12" role="status">
@@ -423,7 +482,7 @@
             </div>
         </div>
         <div class="max-w-6xl mx-auto mt-16 pt-8 border-t border-stone-800 text-center text-[10px] uppercase tracking-widest">
-            <p>© 2026 Vesnická chalupa s wellness v Brodku. Všechna práva vyhrazena.</p>
+            <p>© 2026 Vesnická chalupa s wellness v Brodku. Všechna práva vyhrazena. · <a href="/ochrana-osobnich-udaju.html" class="hover:text-white transition">Ochrana osobních údajů</a></p>
         </div>
     </footer>
 
