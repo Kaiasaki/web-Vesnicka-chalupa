@@ -36,7 +36,7 @@
             "https://vesnickachalupa.cz/img/galerie/09.jpg",
             "https://vesnickachalupa.cz/img/galerie/13.jpg"
         ],
-        "telephone": "+420734708227",
+        "telephone": "+420734708220",
         "email": "chalupabrodek@email.cz",
         "address": {
             "@type": "PostalAddress",
@@ -105,7 +105,7 @@
     </nav>
 
     <div id="spodni-lista" class="fixed bottom-0 inset-x-0 z-30 md:hidden grid grid-cols-2 bg-white border-t border-stone-200 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] translate-y-full transition-transform duration-300">
-        <a href="tel:+420734708227" class="py-4 text-center text-xs uppercase tracking-widest font-bold text-stone-900">Zavolat</a>
+        <a href="tel:+420734708220" class="py-4 text-center text-xs uppercase tracking-widest font-bold text-stone-900">Zavolat</a>
         <a href="#kontakt" class="py-4 text-center text-xs uppercase tracking-widest font-bold bg-stone-900 text-white">Rezervovat</a>
     </div>
 
@@ -450,7 +450,7 @@
                     <p id="f-chyba" class="md:col-span-2 hidden text-sm text-red-700 bg-red-50 border border-red-200 p-3" role="alert"></p>
                     <div class="md:col-span-2">
                         <button type="submit" id="f-odeslat" class="w-full bg-stone-900 text-white py-5 uppercase tracking-widest text-sm font-bold hover:bg-amber-800 transition shadow-md disabled:opacity-60 disabled:cursor-wait">Odeslat poptávku</button>
-                        <p class="text-xs text-stone-400 mt-3 text-center">Poptávka je nezávazná. Raději voláte? <a href="tel:+420734708227" class="underline hover:text-amber-800">+420 734 708 227</a><br><a href="/ochrana-osobnich-udaju.html" class="underline hover:text-amber-800">Jak zpracováváme vaše údaje</a></p>
+                        <p class="text-xs text-stone-400 mt-3 text-center">Poptávka je nezávazná. Raději voláte? <a href="tel:+420734708220" class="underline hover:text-amber-800">+420 734 708 220</a> nebo <a href="tel:+420734708227" class="underline hover:text-amber-800">+420 734 708 227</a><br><a href="/ochrana-osobnich-udaju.html" class="underline hover:text-amber-800">Jak zpracováváme vaše údaje</a></p>
                     </div>
                 </form>
                 <div id="poptavka-diky" class="hidden text-center py-12" role="status">
@@ -472,6 +472,7 @@
                 <h3 class="text-white uppercase tracking-widest text-sm font-bold mb-6">Kontakt</h3>
                 <ul class="text-sm space-y-4">
                     <li class="flex items-center gap-3">📍 <a href="https://mapy.com/fnc/v1/search?query=Brodek%20u%20Konice%20235" target="_blank" rel="noopener" class="hover:text-white transition">Brodek u Konice 235, 798 46</a></li>
+                    <li class="flex items-center gap-3">📞 <a href="tel:+420734708220" class="hover:text-white transition">+420 734 708 220</a></li>
                     <li class="flex items-center gap-3">📞 <a href="tel:+420734708227" class="hover:text-white transition">+420 734 708 227</a></li>
                     <li class="flex items-center gap-3">✉️ <a href="mailto:chalupabrodek@email.cz" class="hover:text-white transition">chalupabrodek@email.cz</a></li>
                 </ul>
@@ -604,7 +605,7 @@
                 form.classList.add('hidden');
                 document.getElementById('poptavka-diky').classList.remove('hidden');
             } catch (err) {
-                ukazChybu('Poptávku se nepodařilo odeslat. Zkontrolujte prosím připojení a zkuste to znovu, nebo nám zavolejte na +420 734 708 227.');
+                ukazChybu('Poptávku se nepodařilo odeslat. Zkontrolujte prosím připojení a zkuste to znovu, nebo nám zavolejte na +420 734 708 220 nebo +420 734 708 227.');
                 odeslat.disabled = false;
                 odeslat.textContent = 'Odeslat poptávku';
             }
