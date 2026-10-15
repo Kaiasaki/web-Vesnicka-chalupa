@@ -9,10 +9,46 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-900">
+
+    <nav id="menu" class="fixed top-0 inset-x-0 z-40 text-white transition-colors duration-300" aria-label="Hlavní menu">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
+            <a href="#" class="font-serif italic text-xl whitespace-nowrap">Vesnická chalupa</a>
+            <div class="hidden lg:flex items-center gap-7 text-xs uppercase tracking-widest font-bold">
+                <a href="#o-nas" class="hover:opacity-70 transition">O chalupě</a>
+                <a href="#wellness" class="hover:opacity-70 transition">Wellness</a>
+                <a href="#vybaveni" class="hover:opacity-70 transition">Vybavení</a>
+                <a href="#galerie" class="hover:opacity-70 transition">Galerie</a>
+                <a href="#cenik" class="hover:opacity-70 transition">Ceník</a>
+                <a href="#pocasi" class="hover:opacity-70 transition">Počasí</a>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="#kontakt" id="menu-rezervovat" class="hidden sm:inline-block bg-white text-stone-900 px-5 py-3 text-xs uppercase tracking-widest font-bold hover:bg-amber-800 hover:text-white transition">Rezervovat</a>
+                <button type="button" id="menu-tlacitko" class="lg:hidden w-10 h-10 flex items-center justify-center" aria-expanded="false" aria-controls="menu-panel" aria-label="Otevřít menu">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="menu-panel" class="hidden lg:hidden bg-white text-stone-900 border-t border-stone-200 shadow-lg">
+            <div class="flex flex-col px-4 py-2 text-sm uppercase tracking-widest font-bold">
+                <a href="#o-nas" class="py-3 border-b border-stone-100">O chalupě</a>
+                <a href="#wellness" class="py-3 border-b border-stone-100">Wellness</a>
+                <a href="#vybaveni" class="py-3 border-b border-stone-100">Vybavení</a>
+                <a href="#galerie" class="py-3 border-b border-stone-100">Galerie</a>
+                <a href="#cenik" class="py-3 border-b border-stone-100">Ceník</a>
+                <a href="#pocasi" class="py-3 border-b border-stone-100">Počasí</a>
+                <a href="#kontakt" class="py-3 text-amber-800">Rezervace</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="spodni-lista" class="fixed bottom-0 inset-x-0 z-30 md:hidden grid grid-cols-2 bg-white border-t border-stone-200 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] translate-y-full transition-transform duration-300">
+        <a href="tel:+420734708227" class="py-4 text-center text-xs uppercase tracking-widest font-bold text-stone-900">Zavolat</a>
+        <a href="#kontakt" class="py-4 text-center text-xs uppercase tracking-widest font-bold bg-stone-900 text-white">Rezervovat</a>
+    </div>
 
     <header class="relative h-screen flex items-center justify-center text-white overflow-hidden">
         <img src="https://i.postimg.cc/G2M8x9Mh/chalupa_brodek_u_konice_f02e_8e5c_636238.jpg" alt="Vesnická chalupa Brodek" class="absolute inset-0 w-full h-full object-cover">
@@ -312,31 +348,52 @@
 
             <div class="bg-white p-4 md:p-8 shadow-sm border border-stone-200 rounded-sm text-left">
                 <h3 class="text-xl mb-6 font-semibold border-b pb-2 text-left">2. Poptávkový formulář</h3>
-                <form action="https://formspree.io/f/mgondakl" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form id="poptavka" action="https://formspree.io/f/mgondakl" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6" novalidate>
+                    <input type="hidden" name="_subject" value="Poptávka z webu vesnickachalupa.cz">
                     <div>
-                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Celé jméno</label>
-                        <input type="text" name="jmeno" placeholder="Jan Novák" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
+                        <label for="f-jmeno" class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Celé jméno</label>
+                        <input type="text" id="f-jmeno" name="jmeno" placeholder="Jan Novák" autocomplete="name" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">E-mail</label>
-                        <input type="email" name="email" placeholder="jan@email.cz" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
+                        <label for="f-email" class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">E-mail</label>
+                        <input type="email" id="f-email" name="email" placeholder="jan@email.cz" autocomplete="email" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500 text-left">Příjezd</label>
-                        <input type="date" name="prijezd" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none text-left" required>
+                        <label for="f-telefon" class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Telefon <span class="normal-case tracking-normal font-normal text-stone-400">(nepovinné)</span></label>
+                        <input type="tel" id="f-telefon" name="telefon" placeholder="+420 …" autocomplete="tel" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none">
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500 text-left">Odjezd</label>
-                        <input type="date" name="odjezd" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none text-left" required>
+                        <label for="f-osoby" class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Počet osob</label>
+                        <select id="f-osoby" name="pocet_osob" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
+                            <option value="" disabled selected>Vyberte</option>
+                            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                            <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+                        </select>
                     </div>
+                    <div>
+                        <label for="f-prijezd" class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Příjezd</label>
+                        <input type="date" id="f-prijezd" name="prijezd" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
+                    </div>
+                    <div>
+                        <label for="f-odjezd" class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Odjezd</label>
+                        <input type="date" id="f-odjezd" name="odjezd" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
+                    </div>
+                    <p id="f-noci" class="md:col-span-2 -mt-2 text-sm text-stone-500" aria-live="polite"></p>
                     <div class="md:col-span-2">
-                        <label class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Zpráva (počet osob, dotazy...)</label>
-                        <textarea name="zprava" rows="4" placeholder="Dobrý den, máme zájem o..." class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none"></textarea>
+                        <label for="f-zprava" class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Zpráva <span class="normal-case tracking-normal font-normal text-stone-400">(nepovinné)</span></label>
+                        <textarea id="f-zprava" name="zprava" rows="4" placeholder="Dobrý den, máme zájem o… (děti, dotazy, zapůjčení elektrokol…)" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none"></textarea>
                     </div>
+                    <p id="f-chyba" class="md:col-span-2 hidden text-sm text-red-700 bg-red-50 border border-red-200 p-3" role="alert"></p>
                     <div class="md:col-span-2">
-                        <button type="submit" class="w-full bg-stone-900 text-white py-5 uppercase tracking-widest text-sm font-bold hover:bg-amber-800 transition shadow-md">Odeslat poptávku</button>
+                        <button type="submit" id="f-odeslat" class="w-full bg-stone-900 text-white py-5 uppercase tracking-widest text-sm font-bold hover:bg-amber-800 transition shadow-md disabled:opacity-60 disabled:cursor-wait">Odeslat poptávku</button>
+                        <p class="text-xs text-stone-400 mt-3 text-center">Poptávka je nezávazná. Raději voláte? <a href="tel:+420734708227" class="underline hover:text-amber-800">+420 734 708 227</a></p>
                     </div>
                 </form>
+                <div id="poptavka-diky" class="hidden text-center py-12" role="status">
+                    <p class="text-amber-800 text-4xl mb-4" aria-hidden="true">✓</p>
+                    <h4 class="text-2xl font-serif italic text-stone-900 mb-3">Děkujeme, poptávku jsme přijali</h4>
+                    <p class="text-stone-500">Ozveme se vám co nejdříve na zadaný e-mail<span id="diky-telefon"></span>.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -364,6 +421,132 @@
             <p>© 2026 Vesnická chalupa s wellness v Brodku. Všechna práva vyhrazena.</p>
         </div>
     </footer>
+
+    <script>
+    // Menu: nad úvodní fotkou průhledné, po odscrollování bílé; na mobilu rozbalovací panel a spodní lišta
+    (function () {
+        const menu = document.getElementById('menu');
+        const rezervovat = document.getElementById('menu-rezervovat');
+        const tlacitko = document.getElementById('menu-tlacitko');
+        const panel = document.getElementById('menu-panel');
+        const lista = document.getElementById('spodni-lista');
+        const kontakt = document.getElementById('kontakt');
+        const PLNE = ['bg-white/95', 'backdrop-blur', 'shadow-sm', 'text-stone-900'];
+
+        function prekresli() {
+            const plne = scrollY > 40 || !panel.classList.contains('hidden');
+            PLNE.forEach(c => menu.classList.toggle(c, plne));
+            menu.classList.toggle('text-white', !plne);
+            rezervovat.classList.toggle('bg-white', !plne);
+            rezervovat.classList.toggle('text-stone-900', !plne);
+            rezervovat.classList.toggle('bg-stone-900', plne);
+            rezervovat.classList.toggle('text-white', plne);
+            // spodní lišta jen mezi úvodní fotkou a rezervačním formulářem
+            const ukazListu = scrollY > innerHeight * 0.6 && kontakt.getBoundingClientRect().top > innerHeight;
+            lista.classList.toggle('translate-y-full', !ukazListu);
+        }
+
+        function prepniPanel(otevrit) {
+            panel.classList.toggle('hidden', !otevrit);
+            tlacitko.setAttribute('aria-expanded', otevrit);
+            tlacitko.setAttribute('aria-label', otevrit ? 'Zavřít menu' : 'Otevřít menu');
+            prekresli();
+        }
+
+        tlacitko.addEventListener('click', () => prepniPanel(panel.classList.contains('hidden')));
+        panel.addEventListener('click', e => { if (e.target.closest('a')) prepniPanel(false); });
+        let ceka = false;
+        addEventListener('scroll', () => {
+            if (ceka) return;
+            ceka = true;
+            requestAnimationFrame(() => { prekresli(); ceka = false; });
+        }, { passive: true });
+        addEventListener('resize', prekresli);
+        prekresli();
+    })();
+
+    // Poptávkový formulář: kontrola údajů, počet nocí a odeslání bez opuštění stránky
+    (function () {
+        const form = document.getElementById('poptavka');
+        const prijezd = document.getElementById('f-prijezd');
+        const odjezd = document.getElementById('f-odjezd');
+        const noci = document.getElementById('f-noci');
+        const chyba = document.getElementById('f-chyba');
+        const odeslat = document.getElementById('f-odeslat');
+        const MIN_NOCI = 2;
+        const DEN = 86400000;
+
+        const dnes = new Date().toLocaleDateString('en-CA'); // RRRR-MM-DD v místním čase
+        const posun = (datum, dny) => new Date(Date.parse(datum) + dny * DEN).toISOString().slice(0, 10);
+        const pocetNoci = () => prijezd.value && odjezd.value ? Math.round((Date.parse(odjezd.value) - Date.parse(prijezd.value)) / DEN) : 0;
+        const ceskeDatum = d => new Intl.DateTimeFormat('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(d));
+        const slovoNoc = n => n === 1 ? 'noc' : n >= 2 && n <= 4 ? 'noci' : 'nocí';
+
+        prijezd.min = dnes;
+        odjezd.min = posun(dnes, MIN_NOCI);
+
+        function aktualizujNoci() {
+            if (prijezd.value) odjezd.min = posun(prijezd.value, MIN_NOCI);
+            const n = pocetNoci();
+            noci.textContent = n > 0 ? `Pobyt na ${n} ${slovoNoc(n)} (${ceskeDatum(prijezd.value)} – ${ceskeDatum(odjezd.value)})` : '';
+        }
+        prijezd.addEventListener('change', aktualizujNoci);
+        odjezd.addEventListener('change', aktualizujNoci);
+
+        function oznac(pole, spatne) {
+            pole.classList.toggle('border-red-500', spatne);
+            pole.classList.toggle('border-stone-200', !spatne);
+            pole.setAttribute('aria-invalid', spatne);
+        }
+
+        function zkontroluj() {
+            const chyby = [];
+            const pravidla = [
+                [form.jmeno, !form.jmeno.value.trim(), 'Vyplňte prosím jméno.'],
+                [form.email, !form.email.value.trim() || !form.email.checkValidity(), 'Zadejte prosím platný e-mail.'],
+                [form.pocet_osob, !form.pocet_osob.value, 'Vyberte počet osob.'],
+                [prijezd, !prijezd.value || prijezd.value < dnes, 'Zvolte datum příjezdu (nejdříve dnes).'],
+                [odjezd, !odjezd.value || pocetNoci() < MIN_NOCI, `Odjezd musí být nejdříve ${MIN_NOCI} noci po příjezdu.`]
+            ];
+            pravidla.forEach(([pole, spatne, zprava]) => {
+                oznac(pole, spatne);
+                if (spatne) chyby.push(zprava);
+            });
+            return chyby;
+        }
+
+        function ukazChybu(text) {
+            chyba.textContent = text;
+            chyba.classList.toggle('hidden', !text);
+        }
+
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            const chyby = zkontroluj();
+            ukazChybu(chyby.join(' '));
+            if (chyby.length) return;
+
+            form.elements._subject.value = `Poptávka ${ceskeDatum(prijezd.value)} – ${ceskeDatum(odjezd.value)}, ${form.pocet_osob.value} os.`;
+            odeslat.disabled = true;
+            odeslat.textContent = 'Odesílám…';
+            try {
+                const odpoved = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+                if (!odpoved.ok) {
+                    // Formspree odeslání na pozadí odmítl (např. kvůli ochraně proti spamu), pošleme formulář klasicky
+                    form.submit();
+                    return;
+                }
+                if (form.telefon.value.trim()) document.getElementById('diky-telefon').textContent = ' nebo telefon';
+                form.classList.add('hidden');
+                document.getElementById('poptavka-diky').classList.remove('hidden');
+            } catch (err) {
+                ukazChybu('Poptávku se nepodařilo odeslat. Zkontrolujte prosím připojení a zkuste to znovu, nebo nám zavolejte na +420 734 708 227.');
+                odeslat.disabled = false;
+                odeslat.textContent = 'Odeslat poptávku';
+            }
+        });
+    })();
+    </script>
 
     <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 select-none" role="dialog" aria-modal="true" aria-label="Fotogalerie">
         <button type="button" id="lb-zavrit" class="absolute top-4 right-4 text-white/80 hover:text-white text-3xl w-12 h-12" aria-label="Zavřít">✕</button>
