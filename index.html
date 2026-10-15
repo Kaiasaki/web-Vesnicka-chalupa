@@ -350,6 +350,11 @@
                 <h3 class="text-xl mb-6 font-semibold border-b pb-2 text-left">2. Poptávkový formulář</h3>
                 <form id="poptavka" action="https://formspree.io/f/mgondakl" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6" novalidate>
                     <input type="hidden" name="_subject" value="Poptávka z webu vesnickachalupa.cz">
+                    <!-- Past na roboty: lidé pole nevidí, roboti ho vyplní a Formspree takovou poptávku zahodí -->
+                    <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+                        <label for="f-gotcha">Nevyplňujte</label>
+                        <input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+                    </div>
                     <div>
                         <label for="f-jmeno" class="block text-xs uppercase tracking-widest mb-2 font-bold text-stone-500">Celé jméno</label>
                         <input type="text" id="f-jmeno" name="jmeno" placeholder="Jan Novák" autocomplete="name" class="w-full p-3 bg-stone-50 border border-stone-200 focus:border-amber-700 outline-none" required>
